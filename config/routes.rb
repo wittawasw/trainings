@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/courses', to: redirect('/')
   resources :courses
 
+  get '/sign_in', to: "sessions#new"
+  resources :sessions, only: [:create]
+
   namespace :api do
     resources :courses, only: [:index, :show]
   end
