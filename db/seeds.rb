@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+jua = User.new(
+  name: Rails.application.credentials.admin.jua.user,
+  password: Rails.application.credentials.admin.jua.password,
+  password_confirmation: Rails.application.credentials.admin.jua.password
+)
+
+if jua.save
+  puts "Successfully create User for: Jua"
+else
+  puts "Something went wrong when create user for: Jua"
+  puts jua.errors.full_messages.join(', ')
+end
