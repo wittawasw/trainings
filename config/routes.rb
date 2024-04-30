@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   get '/courses', to: redirect('/')
   resources :courses
 
+  namespace :api do
+    resources :courses, only: [:index, :show]
+  end
+
   root "courses#index"
 end
