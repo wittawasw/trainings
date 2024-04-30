@@ -7,7 +7,9 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get courses_url
-    assert_response :success
+
+    assert_response :redirect
+    assert_redirected_to root_url
   end
 
   test "should get new" do
