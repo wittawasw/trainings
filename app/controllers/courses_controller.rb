@@ -17,14 +17,14 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    current_user = User.find(session[:user_id])
+    # current_user = User.find(session[:user_id])
 
-    if @course.user != current_user
-      flash[:alert] = "No Permission"
+    # if @course.user != current_user
+    #   flash[:alert] = "No Permission"
 
-      redirect_to course_path(@course)
-      return
-    end
+    #   redirect_to course_path(@course)
+    #   return
+    # end
   end
 
   # POST /courses
@@ -40,14 +40,14 @@ class CoursesController < ApplicationController
 
   # PATCH/PUT /courses/1
   def update
-    current_user = User.find(session[:user_id])
+    # current_user = User.find(session[:user_id])
 
-    if @course.user != current_user
-      flash[:alert] = "No Permission"
+    # if @course.user != current_user
+    #   flash[:alert] = "No Permission"
 
-      redirect_to course_path(@course)
-      return
-    end
+    #   redirect_to course_path(@course)
+    #   return
+    # end
 
     if @course.update(course_params)
       redirect_to @course, notice: "Course was successfully updated.", status: :see_other
@@ -70,6 +70,6 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:name, :body, :summary)
+      params.require(:course).permit(:name, :body, :summary, :user_id)
     end
 end

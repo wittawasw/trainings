@@ -27,6 +27,11 @@
   </div>
 
   <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.select :user_id, User.options_for_select %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
