@@ -3,6 +3,12 @@
     <%= link_to course.name, course %>
   </p>
 
+  <% if course.user %>
+    <p>
+      user: <%= course.user&.name %>
+    </p>
+  <% end %>
+
   <p>
     <strong>Description:</strong>
     <%= course.body %>
