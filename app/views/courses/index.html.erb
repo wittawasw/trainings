@@ -1,5 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
+
+<% if session[:user_name] %>
+<p>
+  Signed in as: <%= session[:user_name] %>
+</p>
+
+<%= link_to 'Sign Out', sign_out_path, data: { turbo: false } %>
+
+<% else %>
+
+<a href="<%= new_session_path%>">Sign In</a>
+<% end %>
+
 <h1>Courses</h1>
 
 <div id="courses">

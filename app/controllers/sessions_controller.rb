@@ -8,8 +8,10 @@ class SessionsController < ApplicationController
 
     user = User.find_by(name: name)
 
-    if (user.authenticate(password))
+    if (!user.nil? && user.authenticate(password))
       flash[:notice] = "Sign In Success as: #{user.name}"
+      session[:user_id] = user.id
+      session[:user_name] = user.name
 
       redirect_to root_path
     else
@@ -17,5 +19,14 @@ class SessionsController < ApplicationController
 
       redirect_to new_session_path
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    session[:user_name] = nil
+
+    flash[:notice] = "Sign Out Success"
+
+    redirect_to root_path
   end
 end
