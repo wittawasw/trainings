@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
                .authenticate(params[:password])
 
     if user
+      session[:user_id] = user.id
       flash[:notice] = "Sign In Success."
 
       redirect_to root_path

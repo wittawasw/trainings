@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+    authenticate!
     @course = Course.new
   end
 
